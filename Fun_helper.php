@@ -1,7 +1,7 @@
 <?php
 // Perfect cURL Function
 // 完美的CURL函数
-function xcurl($url,$ref=null,$post=array(),$ua="Mozilla/5.0 (X11; Linux x86_64; rv:2.2a1pre) Gecko/20110324 Firefox/4.2a1pre",$print=false) {
+function xCurl($url,$ref=null,$post=array(),$ua="Mozilla/5.0 (X11; Linux x86_64; rv:2.2a1pre) Gecko/20110324 Firefox/4.2a1pre",$print=false) {
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_AUTOREFERER, true);
     if(!empty($ref)) {
@@ -31,7 +31,7 @@ function xcurl($url,$ref=null,$post=array(),$ua="Mozilla/5.0 (X11; Linux x86_64;
 /**
  * 获取用户真实 IP
  */
-function getIP()
+function getIp()
 {
     static $realip;
     if (isset($_SERVER)){
