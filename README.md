@@ -6,5 +6,5 @@ xCurl($url, $ref, $post, $ua);
 // 获取用户真实 IP
 getIp();
 // 获取ip地理位置
-getCity();
+getCity($ip);
 </pre>
