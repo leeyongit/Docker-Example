@@ -116,9 +116,9 @@ function getCity($ip)
 /**
  * 截取中文UTF-8字符串
  *
- * @param $str   要截取的字符串
- * @param $start 中文UTF-8字符串的起始位置
- * @param $lenth 要截取中文UTF-8字符串的长度
+ * @param string $str   要截取的字符串
+ * @param string $start 中文UTF-8字符串的起始位置
+ * @param int    $lenth 要截取中文UTF-8字符串的长度
  * @return string
  */
  function strCut_Utf8($str, $start, $lenth)
@@ -163,8 +163,8 @@ function getCity($ip)
 /**
  * 统计utf8中文字符串长度的函数
  *
- * @param $str 要计算长度的字符串
- * @return int 返回字符串的长度
+ * @param string $str 要计算长度的字符串
+ * @return int        返回字符串的长度
  */
 function strLength_Zh($str)
 {
