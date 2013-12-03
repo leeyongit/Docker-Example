@@ -1,18 +1,57 @@
 <?php
-// Perfect cURL Function
-// 完美的CURL函数
+/**
+ * 计算两个经纬度之间的距离
+ *
+ * @param folat $latitude1, $longitude1
+ * @param folat $latitude2, $longitude2
+ * $point1 = array('lat' => 40.770623, 'long' => -73.964367);
+ * $point2 = array('lat' => 40.758224, 'long' => -73.917404);
+ * $distance = getDistanceBetweenPointsNew($point1['lat'], $point1['long'], $point2['lat'], $point2['long']);
+ * foreach ($distance as $unit => $value) {
+ *    echo $unit.': '.number_format($value,4).'<br />';
+ * }
+ * @return array 
+ * The example returns the following:
+ * miles: 2.6025
+ * feet: 13,741.4350
+ * yards: 4,580.4783
+ * kilometers: 4.1884
+ * meters: 4,188.3894
+ */
+function getDistanceBetweenPointsNew($latitude1, $longitude1, $latitude2, $longitude2) {
+    $theta = $longitude1 - $longitude2;
+    $miles = (sin(deg2rad($latitude1)) * sin(deg2rad($latitude2))) + (cos(deg2rad($latitude1)) * cos(deg2rad($latitude2)) * cos(deg2rad($theta)));
+    $miles = acos($miles);
+    $miles = rad2deg($miles);
+    $miles = $miles * 60 * 1.1515;
+    $feet = $miles * 5280;
+    $yards = $feet / 3;
+    $kilometers = $miles * 1.609344;
+    $meters = $kilometers * 1000;
+    return compact('miles','feet','yards','kilometers','meters'); 
+}
+
+/**
+ * 完美的CURL函数
+ *
+ * @param string $url
+ * @param staing $ref
+ * @param array  $post
+ * @param string $ua
+ * @return array $output 
+ */
 function xCurl($url,$ref=null,$post=array(),$ua="Mozilla/5.0 (X11; Linux x86_64; rv:2.2a1pre) Gecko/20110324 Firefox/4.2a1pre",$print=false) {
     $ch = curl_init();
-    curl_setopt($ch, CURLOPT_AUTOREFERER, true);
+    curl_setopt($ch, CURLOPT_AUTOREFERER, true);  // 自动设置header中的referer信息
     if(!empty($ref)) {
-        curl_setopt($ch, CURLOPT_REFERER, $ref);
+        curl_setopt($ch, CURLOPT_REFERER, $ref);  // 在HTTP请求中包含一个”referer”头的字符串
     }
-    curl_setopt($ch, CURLOPT_URL, $url);
-    curl_setopt($ch, CURLOPT_HEADER, 0);
-    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1); // 是否获取跳转后的页面
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); // 将会以字符串的形式返回那个cURL句柄获取的内容
+    curl_setopt($ch, CURLOPT_URL, $url);          // 需要获取的URL地址
+    curl_setopt($ch, CURLOPT_HEADER, 0);          // 启用时会将头文件的信息作为数据流输出
+    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);  // 是否获取跳转后的页面
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);  // 讲curl_exec()获取的信息以文件流的形式返回，而不是直接输出
     if(!empty($ua)) {
-        curl_setopt($ch, CURLOPT_USERAGENT, $ua); // 修改User-Agent 伪造浏览器和操作系统信息
+        curl_setopt($ch, CURLOPT_USERAGENT, $ua); // 在HTTP请求中包含一个”user-agent”头的字符串
     }
     if(count($post) > 0){
         curl_setopt($ch, CURLOPT_POST, 1);
@@ -30,6 +69,8 @@ function xCurl($url,$ref=null,$post=array(),$ua="Mozilla/5.0 (X11; Linux x86_64;
 
 /**
  * 获取用户真实 IP
+ *
+ * @return string $realip
  */
 function getIp()
 {
@@ -60,7 +101,9 @@ function getIp()
 /**
  * 获取 IP  地理位置
  * 淘宝IP接口
- * @Return: array
+ *
+ * @param string $ip
+ * @return array $data
  */
 function getCity($ip)
 {
@@ -72,4 +115,6 @@ function getCity($ip)
     $data = (array)$ip->data;
     return $data;
 }
+
+
 ?>
