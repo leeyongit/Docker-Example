@@ -66,7 +66,6 @@ function xCurl($url,$ref=null,$post=array(),$ua="Mozilla/5.0 (X11; Linux x86_64;
     }
 }
 
-
 /**
  * 获取用户真实 IP
  *
@@ -92,12 +91,10 @@ function getIp()
             $realip = getenv("REMOTE_ADDR");
         }
     }
- 
- 
+
     return $realip;
 }
- 
- 
+
 /**
  * 获取 IP  地理位置
  * 淘宝IP接口
@@ -116,5 +113,96 @@ function getCity($ip)
     return $data;
 }
 
+/**
+ * 截取中文UTF-8字符串
+ *
+ * @param $str   要截取的字符串
+ * @param $start 中文UTF-8字符串的起始位置
+ * @param $lenth 要截取中文UTF-8字符串的长度
+ * @return string
+ */
+ function strCut_Utf8($str, $start, $lenth)
+ {
+    $len = strlen($str);
+    $r = array();
+    $n = 0;
+    $m = 0;
+    for($i = 0; $i < $len; $i++) {
+        $x = substr($str, $i, 1);
+        $a  = base_convert(ord($x), 10, 2);
+        $a = substr('00000000'.$a, -8);
+        if ($n < $start){
+            if (substr($a, 0, 1) == 0) {
+            }elseif (substr($a, 0, 3) == 110) {
+                $i += 1;
+            }elseif (substr($a, 0, 4) == 1110) {
+                $i += 2;
+            }
+            $n++;
+        }else{
+            if (substr($a, 0, 1) == 0) {
+                $r[ ] = substr($str, $i, 1);
+            }elseif (substr($a, 0, 3) == 110) {
+                $r[ ] = substr($str, $i, 2);
+                $i += 1;
+            }elseif (substr($a, 0, 4) == 1110) {
+                $r[ ] = substr($str, $i, 3);
+                $i += 2;
+            }else{
+                $r[ ] = '';
+            }
+            if (++$m >= $lenth){
+                break;
+            }
+        }
+    }
+    $r = implode('',$r);
+    return $r;
+}
+
+/**
+ * 统计utf8中文字符串长度的函数
+ *
+ * @param $str 要计算长度的字符串
+ * @return int 返回字符串的长度
+ */
+function strLength_Zh($str)
+{
+    if(empty($str)) {
+        return 0;
+    }
+    if(function_exists('mb_strlen')) {
+        return mb_strlen($str,'utf-8');
+    } else {
+        preg_match_all("/./u", $str, $ar);
+        return count($ar[0]);
+    }
+}
+
+/**
+ * 抓取远程图片
+ *
+ * @param string $url 远程图片
+ * @param string $filename 保存图片的文件名
+ */
+function GrabImage($url, $filename = "") {
+    if ($url == "") return false;
+
+    if ($filename == "") {
+        $ext = strrchr($url, ".");
+        if ($ext != ".gif" && $ext != ".jpg" && $ext != ".png") return false;
+        $filename = date("dMYHis") . $ext;
+    }
+
+    ob_start();               //打开输出
+    readfile($url);           //输出图片文件
+    $img = ob_get_contents(); //得到浏览器输出
+    ob_end_clean();           //清除输出并关闭
+    $size = strlen($img);     //得到图片大小
+    $fp2 = @fopen($filename, "a");
+    fwrite($fp2, $img);       //向当前目录写入图片文件，并重新命名
+    fclose($fp2);
+    return $filename;         //返回新的文件名
+}
 
 ?>
