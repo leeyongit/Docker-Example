@@ -121,7 +121,7 @@ function getCity($ip)
  * @param int    $lenth 要截取中文UTF-8字符串的长度
  * @return string
  */
- function strCut_Utf8($str, $start, $lenth)
+ function cutStrUtf8($str, $start, $lenth)
  {
     $len = strlen($str);
     $r = array();
@@ -166,7 +166,7 @@ function getCity($ip)
  * @param string $str 要计算长度的字符串
  * @return int        返回字符串的长度
  */
-function strLength_Zh($str)
+function strLengthZh($str)
 {
     if(empty($str)) {
         return 0;
@@ -185,7 +185,8 @@ function strLength_Zh($str)
  * @param string $url 远程图片
  * @param string $filename 保存图片的文件名
  */
-function GrabImage($url, $filename = "") {
+function grabImage($url, $filename = "")
+{
     if ($url == "") return false;
 
     if ($filename == "") {
@@ -204,5 +205,6 @@ function GrabImage($url, $filename = "") {
     fclose($fp2);
     return $filename;         //返回新的文件名
 }
+
 
 ?>
