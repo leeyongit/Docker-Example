@@ -205,6 +205,29 @@ function grabImage($url, $filename = "")
     fclose($fp2);
     return $filename;         //返回新的文件名
 }
-
+/**
+ *  二维数组排序
+ * 
+ * @param array  $arr
+ * @param string $keys
+ * @param string $type
+ * @return array $nev_array
+ * /
+function array_sort($arr,$keys,$type='asc'){ 
+	$keysvalue = $new_array = array();
+	foreach ($arr as $k=>$v){
+		$keysvalue[$k] = $v[$keys];
+	}
+	if($type == 'asc'){
+		asort($keysvalue);
+	}else{
+		arsort($keysvalue);
+	}
+	reset($keysvalue);
+	foreach ($keysvalue as $k=>$v){
+		$new_array[$k] = $arr[$k];
+	}
+	return $new_array; 
+} 
 
 ?>
