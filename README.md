@@ -15,7 +15,7 @@ get_realip();
 <pre>
 get_city($ip);
 </pre>
-截取中文UTF-8字符串
+截取中文utf8字符串
 <pre>
 utf8_cutstr($str, $start, $lenth)
 </pre>
