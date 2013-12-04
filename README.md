@@ -1,18 +1,33 @@
 <h2>代码片段</h2>
-
+计算两个经纬度之间的距离 
 <pre>
-// 计算两个经纬度之间的距离 
 getDistanceBetweenPointsNew($latitude1, $longitude1, $latitude2, $longitude2)
-// 完美的curl函数
+</pre>
+完美的curl函数
+<pre>
 xCurl($url, $ref, $post, $ua);
-// 获取用户真实 IP
+</pre>
+获取用户真实 IP
+<pre>
 getIp();
-// 获取ip地理位置
+</pre>
+获取ip地理位置
+<pre>
 getCity($ip);
-// 截取中文UTF-8字符串
+</pre>
+截取中文UTF-8字符串
+<pre>
 cutStrUtf8($str, $start, $lenth)
-// 统计utf8中文字符串长度的函数
+</pre>
+统计utf8中文字符串长度的函数
+<pre>
 strLengthZh($str)
-// 抓取远程图片
+</pre>
+抓取远程图片
+<pre>
 grabImage($url, $filename)
+</pre>
+二维数组排序
+<pre>
+array_sort($arr,$keys,$type)
 </pre>
