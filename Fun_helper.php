@@ -6,7 +6,7 @@
  * @param folat $latitude2, $longitude2
  * $point1 = array('lat' => 40.770623, 'long' => -73.964367);
  * $point2 = array('lat' => 40.758224, 'long' => -73.917404);
- * $distance = getDistanceBetweenPointsNew($point1['lat'], $point1['long'], $point2['lat'], $point2['long']);
+ * $distance = get_distance($point1['lat'], $point1['long'], $point2['lat'], $point2['long']);
  * foreach ($distance as $unit => $value) {
  *    echo $unit.': '.number_format($value,4).'<br />';
  * }
@@ -18,7 +18,7 @@
  * kilometers: 4.1884
  * meters: 4,188.3894
  */
-function getDistanceBetweenPointsNew($latitude1, $longitude1, $latitude2, $longitude2) {
+function get_distance($latitude1, $longitude1, $latitude2, $longitude2) {
     $theta = $longitude1 - $longitude2;
     $miles = (sin(deg2rad($latitude1)) * sin(deg2rad($latitude2))) + (cos(deg2rad($latitude1)) * cos(deg2rad($latitude2)) * cos(deg2rad($theta)));
     $miles = acos($miles);
@@ -40,7 +40,7 @@ function getDistanceBetweenPointsNew($latitude1, $longitude1, $latitude2, $longi
  * @param string $ua
  * @return array $output 
  */
-function xCurl($url,$ref=null,$post=array(),$ua="Mozilla/5.0 (X11; Linux x86_64; rv:2.2a1pre) Gecko/20110324 Firefox/4.2a1pre",$print=false) {
+function xcurl($url,$ref=null,$post=array(),$ua="Mozilla/5.0 (X11; Linux x86_64; rv:2.2a1pre) Gecko/20110324 Firefox/4.2a1pre",$print=false) {
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_AUTOREFERER, true);  // 自动设置header中的referer信息
     if(!empty($ref)) {
@@ -71,7 +71,7 @@ function xCurl($url,$ref=null,$post=array(),$ua="Mozilla/5.0 (X11; Linux x86_64;
  *
  * @return string $realip
  */
-function getIp()
+function get_realip()
 {
     static $realip;
     if (isset($_SERVER)){
@@ -102,7 +102,7 @@ function getIp()
  * @param string $ip
  * @return array $data
  */
-function getCity($ip)
+function get_city($ip)
 {
     $url="http://ip.taobao.com/service/getIpInfo.php?ip=".$ip;
     $ip=json_decode(file_get_contents($url));
@@ -121,7 +121,7 @@ function getCity($ip)
  * @param int    $lenth 要截取中文UTF-8字符串的长度
  * @return string
  */
- function cutStrUtf8($str, $start, $lenth)
+ function utf8_cutstr($str, $start, $lenth)
  {
     $len = strlen($str);
     $r = array();
@@ -166,7 +166,7 @@ function getCity($ip)
  * @param string $str 要计算长度的字符串
  * @return int        返回字符串的长度
  */
-function strLengthZh($str)
+function utf8_strlen($str)
 {
     if(empty($str)) {
         return 0;
@@ -185,7 +185,7 @@ function strLengthZh($str)
  * @param string $url 远程图片
  * @param string $filename 保存图片的文件名
  */
-function grabImage($url, $filename = "")
+function get_image($url, $filename = "")
 {
     if ($url == "") return false;
 
@@ -205,6 +205,7 @@ function grabImage($url, $filename = "")
     fclose($fp2);
     return $filename;         //返回新的文件名
 }
+
 /**
  *  二维数组排序
  * 
@@ -212,7 +213,7 @@ function grabImage($url, $filename = "")
  * @param string $keys
  * @param string $type
  * @return array $nev_array
- * /
+ */
 function array_sort($arr,$keys,$type='asc'){ 
 	$keysvalue = $new_array = array();
 	foreach ($arr as $k=>$v){
