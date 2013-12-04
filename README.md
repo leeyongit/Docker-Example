@@ -1,31 +1,31 @@
 <h2>代码片段</h2>
 计算两个经纬度之间的距离 
 <pre>
-getDistanceBetweenPointsNew($latitude1, $longitude1, $latitude2, $longitude2)
+get_distance($latitude1, $longitude1, $latitude2, $longitude2)
 </pre>
 完美的curl函数
 <pre>
-xCurl($url, $ref, $post, $ua);
+xcurl($url, $ref, $post, $ua);
 </pre>
 获取用户真实 IP
 <pre>
-getIp();
+get_realip();
 </pre>
 获取ip地理位置
 <pre>
-getCity($ip);
+get_city($ip);
 </pre>
 截取中文UTF-8字符串
 <pre>
-cutStrUtf8($str, $start, $lenth)
+utf8_cutstr($str, $start, $lenth)
 </pre>
 统计utf8中文字符串长度的函数
 <pre>
-strLengthZh($str)
+utf8_strlen($str)
 </pre>
 抓取远程图片
 <pre>
-grabImage($url, $filename)
+get_image($url, $filename)
 </pre>
 二维数组排序
 <pre>
