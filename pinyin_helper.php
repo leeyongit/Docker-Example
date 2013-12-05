@@ -4,7 +4,7 @@
  * 
  * @param string $_String
  * @param string $_Code GBK页面可改为gb2312，其他为UTF8
- * /
+ */
 function Pinyin($_String, $_Code='UTF8'){
         $_DataKey = "a|ai|an|ang|ao|ba|bai|ban|bang|bao|bei|ben|beng|bi|bian|biao|bie|bin|bing|bo|bu|ca|cai|can|cang|cao|ce|ceng|cha". 
                     "|chai|chan|chang|chao|che|chen|cheng|chi|chong|chou|chu|chuai|chuan|chuang|chui|chun|chuo|ci|cong|cou|cu|". 
