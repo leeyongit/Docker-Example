@@ -17,7 +17,7 @@ get_city($ip);
 </pre>
 截取中文utf8字符串
 <pre>
-utf8_cutstr($str, $start, $lenth)
+utf8_substr($str, $start, $lenth)
 </pre>
 统计utf8中文字符串长度的函数
 <pre>
