@@ -121,7 +121,7 @@ function get_city($ip)
  * @param int    $lenth 要截取中文UTF-8字符串的长度
  * @return string
  */
- function utf8_cutstr($str, $start, $lenth)
+ function utf8_substr($str, $start, $lenth)
  {
     $len = strlen($str);
     $r = array();
