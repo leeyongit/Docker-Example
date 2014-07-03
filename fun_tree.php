@@ -81,7 +81,6 @@ function buildTree($items, $parent_id=0) {
 	}
 	
 	return $tree;
-
 }
 
 $tree = buildTree($items);
