@@ -77,7 +77,7 @@ function buildTree($items, $parent_id=0) {
 		if ($item['parent_id'] != $parent_id) continue;
 		$tree[$item['id']] = $item;
 		$childs = buildTree($items, $item['id']);
-		if ($child) $tree[$item['id']]['childs'] = $childs;
+		if ($childs) $tree[$item['id']]['childs'] = $childs;
 	}
 	
 	return $tree;
