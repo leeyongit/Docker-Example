@@ -153,3 +153,55 @@ function get_city($ip)
     $data = (array)$ip->data;
     return $data;
 }
+
+/**
+ * 抓取远程图片
+ *
+ * @param string $url 远程图片
+ * @param string $filename 保存图片的文件名
+ */
+function get_image($url, $filename = "")
+{
+    if ($url == "") return false;
+
+    if ($filename == "") {
+        $ext = strrchr($url, ".");
+        if ($ext != ".gif" && $ext != ".jpg" && $ext != ".png") return false;
+        $filename = date("dMYHis") . $ext;
+    }
+
+    ob_start();               //打开输出
+    readfile($url);           //输出图片文件
+    $img = ob_get_contents(); //得到浏览器输出
+    ob_end_clean();           //清除输出并关闭
+    $size = strlen($img);     //得到图片大小
+    $fp2 = @fopen($filename, "a");
+    fwrite($fp2, $img);       //向当前目录写入图片文件，并重新命名
+    fclose($fp2);
+    return $filename;         //返回新的文件名
+}
+
+/**
+ *  二维数组排序
+ * 
+ * @param array  $arr
+ * @param string $keys
+ * @param string $type
+ * @return array $nev_array
+ */
+function array_sort($arr,$keys,$type='asc'){ 
+	$keysvalue = $new_array = array();
+	foreach ($arr as $k=>$v){
+		$keysvalue[$k] = $v[$keys];
+	}
+	if($type == 'asc'){
+		asort($keysvalue);
+	}else{
+		arsort($keysvalue);
+	}
+	reset($keysvalue);
+	foreach ($keysvalue as $k=>$v){
+		$new_array[$k] = $arr[$k];
+	}
+	return $new_array; 
+} 
