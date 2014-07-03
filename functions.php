@@ -2,7 +2,7 @@
 
 // PHP stdClass to Array and Array to stdClass – stdClass Object 
 
-// Function to Convert stdClass Objects to Multidimensional Arrays
+// stdClass 对象转换成数组
 function objectToArray($d) {
 	if (is_object($d)) {
 		// Gets the properties of the given object
@@ -24,7 +24,7 @@ function objectToArray($d) {
 	}
 }
 
-// Function to Convert Multidimensional Arrays to stdClass Objects
+// 数组转换成 stdClass 对象
 function arrayToObject($d) {  
     if (is_array($d)) {  
         /* 
