@@ -89,69 +89,7 @@ function clean($input)
     return $output;
 }
 
-// 检测用户位置 使用下面的函数，可以检测用户是在哪个城市访问你的网站
-function detect_city($ip) {
-    
-    $default = 'UNKNOWN';
 
-    $curlopt_useragent = 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.2) Gecko/20100115 Firefox/3.6 (.NET CLR 3.5.30729)';
-    
-    $url = 'http://ipinfodb.com/ip_locator.php?ip=' . urlencode($ip);
-    $ch = curl_init();
-    
-    $curl_opt = array(
-        CURLOPT_FOLLOWLOCATION  => 1,
-        CURLOPT_HEADER      => 0,
-        CURLOPT_RETURNTRANSFER  => 1,
-        CURLOPT_USERAGENT   => $curlopt_useragent,
-        CURLOPT_URL       => $url,
-        CURLOPT_TIMEOUT         => 1,
-        CURLOPT_REFERER         => 'http://' . $_SERVER['HTTP_HOST'],
-    );
-    
-    curl_setopt_array($ch, $curl_opt);
-    
-    $content = curl_exec($ch);
-    
-    if (!is_null($curl_info)) {
-        $curl_info = curl_getinfo($ch);
-    }
-    
-    curl_close($ch);
-    
-    if ( preg_match('{<li>City : ([^<]*)</li>}i', $content, $regs) )  {
-        $city = $regs[1];
-    }
-    if ( preg_match('{<li>State/Province : ([^<]*)</li>}i', $content, $regs) )  {
-        $state = $regs[1];
-    }
-
-    if( $city!='' && $state!='' ){
-      $location = $city . ', ' . $state;
-      return $location;
-    }else{
-      return $default; 
-    }
-    
-}
-// 获取用户的真实  IP
-function getRealIpAddr()  
-{  
-    if (!emptyempty($_SERVER['HTTP_CLIENT_IP']))  
-    {  
-        $ip=$_SERVER['HTTP_CLIENT_IP'];  
-    }  
-    elseif (!emptyempty($_SERVER['HTTP_X_FORWARDED_FOR']))  
-    //to check ip is pass from proxy  
-    {  
-        $ip=$_SERVER['HTTP_X_FORWARDED_FOR'];  
-    }  
-    else  
-    {  
-        $ip=$_SERVER['REMOTE_ADDR'];  
-    }  
-    return $ip;  
-}
 
 // 获取当前页面 URL
 function current_url()
@@ -161,17 +99,5 @@ function current_url()
 	return validURL;
 }
 
-// 根据 URL 下载图片
-function imagefromURL($image,$rename)
-{
-	$ch = curl_init($image);
-	curl_setopt($ch, CURLOPT_HEADER, 0);
-	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-	curl_setopt($ch, CURLOPT_BINARYTRANSFER,1);
-	$rawdata=curl_exec ($ch);
-	curl_close ($ch);
-	$fp = fopen("$rename",'w');
-	fwrite($fp, $rawdata); 
-	fclose($fp);
-}
+
 ?>
