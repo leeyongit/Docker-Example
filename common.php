@@ -21,6 +21,22 @@ function is_username($username) {
 	return true;
 }
 
+ /**
+ * 检测输入中是否含有错误字符
+ *
+ * @param char $string 要检查的字符串名称
+ * @return TRUE or FALSE
+ */
+function is_badword($string) {
+	$badwords = array("\\",'&',' ',"'",'"','/','*',',','<','>',"\r","\t","\n","#");
+	foreach($badwords as $value){
+		if(strpos($string, $value) !== FALSE) {
+			return TRUE;
+		}
+	}
+	return FALSE;
+}
+
 /**
  * 判断email格式是否正确
  * @param $email
