@@ -57,7 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 function input($data) {
-  $data = trim($data);			// 去除用户输入数据中不必要的字符（多余的空格、制表符、换行）
+  $data = trim($data);		// 去除用户输入数据中不必要的字符（多余的空格、制表符、换行）
   $data = stripslashes($data);  // 删除用户输入数据中的反斜杠（\）
   $data = htmlspecialchars($data); // 把特殊字符转换为 HTML 实体
   return $data;
