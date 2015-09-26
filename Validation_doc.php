@@ -42,6 +42,20 @@ echo filter_var("asdf_123",FILTER_CALLBACK,array("options"=>"toDash"));
 
 // returns 'asdf-123'
 
+/*
+sql防注入函数
+定义和用法
+addslashes() 函数在指定的预定义字符前添加反斜杠。
+
+这些预定义字符是：
+
+单引号 (')
+双引号 (")
+反斜杠 ()
+null
+语法
+addslashes(string)
+*/
 
 // htmlspecialchars_decode()：把一些预定义的html实体转换为字符。
 // 表单验证字符串
