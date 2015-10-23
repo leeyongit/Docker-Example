@@ -82,9 +82,11 @@ class Pagebootstarp{
         /* 生成URL */
         $this->parameter[$this->p] = urlencode('[PAGE]');
         foreach ($this->parameter as $key => $val) {
-            $parameter .= '&'.$key . '=' .$val;
+            //$parameter .= '&'.$key . '=' .$val;
+            $parameter .= '/'.$key . '/' .$val;
         }
-		$this->url ='?c='.CONTROLLER_NAME.'&a='.ACTION_NAME. $parameter;  // 
+		//$this->url ='?c='.CONTROLLER_NAME.'&a='.ACTION_NAME. $parameter;  // 
+        $this->url = MODULE_NAME.'/'.CONTROLLER_NAME.'/'.ACTION_NAME. $parameter;
         /* 计算分页信息 */
         $this->totalPages = ceil($this->totalRows / $this->listRows); //总页数
         if(!empty($this->totalPages) && $this->nowPage > $this->totalPages) {
