@@ -284,3 +284,21 @@ function array_sort($arr,$keys,$type='asc'){
 	}
 	return $new_array; 
 } 
+    /**
+     * 不转义中文字符和\/的 json 编码方法
+     * @param array $arr 待编码数组
+     * @return string
+     */
+    function json_encode_no_zh($arr) {
+    	$str = str_replace ( "\\/", "/", json_encode ( $arr ) );
+    	$search = "#\\\u([0-9a-f]+)#ie";
+     
+    	if (strpos ( strtoupper(PHP_OS), 'WIN' ) === false) {
+    		$replace = "iconv('UCS-2BE', 'UTF-8', pack('H4', '\\1'))";//LINUX
+    	} else {
+    		$replace = "iconv('UCS-2', 'UTF-8', pack('H4', '\\1'))";//WINDOWS
+    	}
+     
+    	return preg_replace ( $search, $replace, $str );
+    }
+
