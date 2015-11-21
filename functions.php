@@ -283,22 +283,42 @@ function array_sort($arr,$keys,$type='asc'){
 		$new_array[$k] = $arr[$k];
 	}
 	return $new_array; 
-} 
-    /**
-     * 不转义中文字符和\/的 json 编码方法
-     * @param array $arr 待编码数组
-     * @return string
-     */
-    function json_encode_no_zh($arr) {
-    	$str = str_replace ( "\\/", "/", json_encode ( $arr ) );
-    	$search = "#\\\u([0-9a-f]+)#ie";
-     
-    	if (strpos ( strtoupper(PHP_OS), 'WIN' ) === false) {
-    		$replace = "iconv('UCS-2BE', 'UTF-8', pack('H4', '\\1'))";//LINUX
-    	} else {
-    		$replace = "iconv('UCS-2', 'UTF-8', pack('H4', '\\1'))";//WINDOWS
-    	}
-     
-    	return preg_replace ( $search, $replace, $str );
+}
+
+/**
+ * 不转义中文字符和\/的 json 编码方法
+ * @param array $arr 待编码数组
+ * @return string
+ */
+function json_encode_no_zh($arr) {
+	$str = str_replace ( "\\/", "/", json_encode ( $arr ) );
+	$search = "#\\\u([0-9a-f]+)#ie";
+ 
+	if (strpos ( strtoupper(PHP_OS), 'WIN' ) === false) {
+		$replace = "iconv('UCS-2BE', 'UTF-8', pack('H4', '\\1'))";//LINUX
+	} else {
+		$replace = "iconv('UCS-2', 'UTF-8', pack('H4', '\\1'))";//WINDOWS
+	}
+ 
+	return preg_replace ( $search, $replace, $str );
+}
+
+/**
+ * 面包屑
+ * @param int $id 分类ID
+ * @return string
+ */
+function breadcrumbs($id) {
+    $cate = $GLOBALS['cats'];
+    $cats = array();
+    foreach ($cate as $val) {
+    	$cats[$val['cat_id']] = $val;
     }
 
+    if($cats[$id]['parent_id'] > 0) {
+        return breadcrumbs($cats[$id]['parent_id']) . ' -> ' . $cats[$id]['title'];
+    }
+    else {
+        return $cats[$id]['title'];
+    }
+}
