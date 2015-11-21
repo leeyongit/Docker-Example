@@ -322,3 +322,71 @@ function breadcrumbs($id) {
         return $cats[$id]['title'];
     }
 }
+
+/**
+ * 文件下载
+ * @param $filepath 文件路径
+ * @param $filename 文件名称
+ */
+
+function file_down($filepath, $filename = '') {
+    if(!$filename) $filename = basename($filepath);
+    if(is_ie()) $filename = rawurlencode($filename);
+    $filetype = fileext($filename);
+    $filesize = sprintf("%u", filesize($filepath));
+    if(ob_get_length() !== false) @ob_end_clean();
+    header('Pragma: public');
+    header('Last-Modified: '.gmdate('D, d M Y H:i:s') . ' GMT');
+    header('Cache-Control: no-store, no-cache, must-revalidate');
+    header('Cache-Control: pre-check=0, post-check=0, max-age=0');
+    header('Content-Transfer-Encoding: binary');
+    header('Content-Encoding: none');
+    header('Content-type: '.$filetype);
+    header('Content-Disposition: attachment; filename="'.$filename.'"');
+    header('Content-length: '.$filesize);
+    readfile($filepath);
+    exit;
+}
+
+/**
+* 转换字节数为其他单位
+*
+*
+* @param    string  $filesize   字节大小
+* @return   string  返回大小
+*/
+function sizecount($filesize) {
+    if ($filesize >= 1073741824) {
+        $filesize = round($filesize / 1073741824 * 100) / 100 .' GB';
+    } elseif ($filesize >= 1048576) {
+        $filesize = round($filesize / 1048576 * 100) / 100 .' MB';
+    } elseif($filesize >= 1024) {
+        $filesize = round($filesize / 1024 * 100) / 100 . ' KB';
+    } else {
+        $filesize = $filesize.' Bytes';
+    }
+    return $filesize;
+}
+
+/**
+ * 程序执行时间
+ *
+ * @return  int 单位ms
+ */
+function execute_time() {
+    $stime = explode ( ' ', SYS_START_TIME );
+    $etime = explode ( ' ', microtime () );
+    return number_format ( ($etime [1] + $etime [0] - $stime [1] - $stime [0]), 6 );
+}
+
+
+/**
+ * 获取当前页面完整URL地址
+ */
+function get_url() {
+    $sys_protocal = isset($_SERVER['SERVER_PORT']) && $_SERVER['SERVER_PORT'] == '443' ? 'https://' : 'http://';
+    $php_self = $_SERVER['PHP_SELF'] ? safe_replace($_SERVER['PHP_SELF']) : safe_replace($_SERVER['SCRIPT_NAME']);
+    $path_info = isset($_SERVER['PATH_INFO']) ? safe_replace($_SERVER['PATH_INFO']) : '';
+    $relate_url = isset($_SERVER['REQUEST_URI']) ? safe_replace($_SERVER['REQUEST_URI']) : $php_self.(isset($_SERVER['QUERY_STRING']) ? '?'.safe_replace($_SERVER['QUERY_STRING']) : $path_info);
+    return $sys_protocal.(isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : '').$relate_url;
+}
