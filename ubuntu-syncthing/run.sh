@@ -2,7 +2,6 @@
 
 docker rm -f syncthing
 
-
 docker run -d --restart=always \
   -v ~/Desktop/docker/docker-syncthing/srv/sync:/srv/data \
   -v ~/Desktop/docker/docker-syncthing/srv/syncthing:/srv/config \

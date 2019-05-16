@@ -1,0 +1,54 @@
+version: '2'
+services:
+  ethereum-1:
+    image: ethereum/client-go
+    restart: on-failure
+    container_name: geth-1
+    hostname: geth-1
+    links:
+      - netstats
+    command: '--datadir=/root/.ethereum --networkid 1 --syncmode "light" --rpc --rpcapi "db,personal,eth,net,web3" --rpccorsdomain="*" --rpc --rpcaddr="0.0.0.0" --rpccorsdomain "*"'
+    volumes:
+      - /home/ethereum/geth-1:/root/.ethereum
+    ports:
+      - "30303:30303"
+      - "30303:30303/udp"
+      - "8545:8545"
+  ethereum-2:
+    image: ethereum/client-go
+    restart: on-failure
+    container_name: geth-2
+    hostname: geth-2
+    links:
+      - netstats
+    command: '--datadir=/root/.ethereum --networkid 1 --syncmode "light" --rpc --rpcapi "db,personal,eth,net,web3" --rpccorsdomain="*" --rpc --rpcaddr="0.0.0.0" --rpccorsdomain "*"'
+    volumes:
+      - /home/ethereum/geth-2:/root/.ethereum
+    ports:
+      - "30304:30303"
+      - "30304:30303/udp"
+      - "8546:8545"
+  ethereum-3:
+    image: ethereum/client-go
+    restart: on-failure
+    container_name: geth-3
+    hostname: geth-3
+    links:
+      - netstats
+    command: '--datadir=/root/.ethereum --networkid 1 --syncmode "light" --rpc --rpcapi "db,personal,eth,net,web3" --rpccorsdomain="*" --rpc --rpcaddr="0.0.0.0" --rpccorsdomain "*"'
+    volumes:
+      - /home/ethereum/geth-3:/root/.ethereum
+    ports:
+      - "30305:30303"
+      - "30305:30303/udp"
+      - "8547:8545"
+  netstats:
+    image: kairen/ethstats
+    restart: on-failure
+    container_name: netstats
+    environment:
+      - WS_SECRET=1
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - "3000:3000"

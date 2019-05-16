@@ -14,5 +14,5 @@ RUN sudo apt-get -y install libevent-dev
 RUN pip install greenlet
 RUN easy_install greenlet
 RUN pip install locustio
-EXPOSE 8089
+EXPOSE 8000
 WORKDIR /home
