@@ -1,60 +1,23 @@
-# Nginx PHP MySQL [![Build Status](https://travis-ci.org/nanoninja/docker-nginx-php-mysql.svg?branch=master)](https://travis-ci.org/nanoninja/docker-nginx-php-mysql) [![GitHub version](https://badge.fury.io/gh/nanoninja%2Fdocker-nginx-php-mysql.svg)](https://badge.fury.io/gh/nanoninja%2Fdocker-nginx-php-mysql)
+# Nginx PHP MySQL
+Docker 运行 Nginx, PHP-FPM, Composer, MySQL and PHPMyAdmin.
 
-Docker running Nginx, PHP-FPM, Composer, MySQL and PHPMyAdmin.
-
-## Overview
-
-1. [Install prerequisites](#install-prerequisites)
-
-    Before installing project make sure the following prerequisites have been met.
-
-2. [Clone the project](#clone-the-project)
-
-    We’ll download the code from its repository on GitHub.
-
-3. [Configure Nginx With SSL Certificates](#configure-nginx-with-ssl-certificates) [`Optional`]
-
-    We'll generate and configure SSL certificate for nginx before running server.
-
-4. [Configure Xdebug](#configure-xdebug) [`Optional`]
-
-    We'll configure Xdebug for IDE (PHPStorm or Netbeans).
-
-5. [Run the application](#run-the-application)
-
-    By this point we’ll have all the project pieces in place.
-
-6. [Use Makefile](#use-makefile) [`Optional`]
-
-    When developing, you can use `Makefile` for doing recurrent operations.
-
-7. [Use Docker Commands](#use-docker-commands)
-
-    When running, you can use docker commands for doing recurrent operations.
-
-___
-
-## Install prerequisites
-
-For now, this project has been mainly created for Unix `(Linux/MacOS)`. Perhaps it could work on Windows.
-
-All requisites should be available for your distribution. The most important are :
+## 安装必备
 
 * [Git](https://git-scm.com/downloads)
 * [Docker](https://docs.docker.com/engine/installation/)
 * [Docker Compose](https://docs.docker.com/compose/install/)
 
-Check if `docker-compose` is already installed by entering the following command :
+检查是否安装 `docker-compose` 的命令 :
 
 ```sh
 which docker-compose
 ```
 
-Check Docker Compose compatibility :
+检查Docker兼容性 :
 
 * [Compose file version 3 reference](https://docs.docker.com/compose/compose-file/)
 
-The following is optional but makes life more enjoyable :
+以下是可选的，但使生活更愉快 :
 
 ```sh
 which make
@@ -75,9 +38,9 @@ sudo apt install build-essential
 * [PHPMyAdmin](https://hub.docker.com/r/phpmyadmin/phpmyadmin/)
 * [Generate Certificate](https://hub.docker.com/r/jacoelho/generate-certificate/)
 
-You should be careful when installing third party web servers such as MySQL or Nginx.
+安装第三方网络服务器时应注意，例如MySQL或Nginx。
 
-This project use the following ports :
+该项目使用以下端口 :
 
 | Server     | Port |
 |------------|------|
