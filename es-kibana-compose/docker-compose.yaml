@@ -22,9 +22,8 @@ services:
       - XPACK_GRAPH_ENABLED=true
       - TIMELION_ENABLED=true
       - XPACK_MONITORING_COLLECTION_ENABLED="true"
+      - elasticsearch_url=http://localhost:9200
     ports:
       - "5601:5601"
-    environment:
-      - elasticsearch_url=http://localhost:9200
     depends_on:
       - elasticsearch

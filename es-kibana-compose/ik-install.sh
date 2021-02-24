@@ -1,0 +1,1 @@
+docker exec -it es7 /bin/bash -c "/opt/bitnami/elasticsearch/bin/elasticsearch-plugin install https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v7.9.2/elasticsearch-analysis-ik-7.9.2.zip"
