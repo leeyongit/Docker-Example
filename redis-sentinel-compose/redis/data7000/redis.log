@@ -1,0 +1,85 @@
+1:C 01 Mar 2021 09:30:45.573 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+1:C 01 Mar 2021 09:30:45.606 # Redis version=6.2.0, bits=64, commit=00000000, modified=0, pid=1, just started
+1:C 01 Mar 2021 09:30:45.617 # Configuration loaded
+1:M 01 Mar 2021 09:30:45.641 * monotonic clock: POSIX clock_gettime
+1:M 01 Mar 2021 09:30:45.693 * Running mode=standalone, port=7000.
+1:M 01 Mar 2021 09:30:45.706 # WARNING: The TCP backlog setting of 511 cannot be enforced because /proc/sys/net/core/somaxconn is set to the lower value of 128.
+1:M 01 Mar 2021 09:30:45.724 # Server initialized
+1:M 01 Mar 2021 09:30:45.736 * Ready to accept connections
+1:M 01 Mar 2021 09:30:45.801 * Replica 172.21.0.1:7001 asks for synchronization
+1:M 01 Mar 2021 09:30:45.804 * Full resync requested by replica 172.21.0.1:7001
+1:M 01 Mar 2021 09:30:45.818 * Replication backlog created, my new replication IDs are 'f1c2a4f8699e6fccf03aa874a24a982c390b362c' and '0000000000000000000000000000000000000000'
+1:M 01 Mar 2021 09:30:45.875 * Starting BGSAVE for SYNC with target: disk
+1:M 01 Mar 2021 09:30:45.881 * Background saving started by pid 18
+18:C 01 Mar 2021 09:30:45.920 * DB saved on disk
+18:C 01 Mar 2021 09:30:45.931 * RDB: 0 MB of memory used by copy-on-write
+1:M 01 Mar 2021 09:30:45.992 * Background saving terminated with success
+1:M 01 Mar 2021 09:30:46.015 * Synchronization with replica 172.21.0.1:7001 succeeded
+1:M 01 Mar 2021 09:30:46.696 * Replica 172.21.0.1:7002 asks for synchronization
+1:M 01 Mar 2021 09:30:46.701 * Full resync requested by replica 172.21.0.1:7002
+1:M 01 Mar 2021 09:30:46.755 * Starting BGSAVE for SYNC with target: disk
+1:M 01 Mar 2021 09:30:46.762 * Background saving started by pid 19
+19:C 01 Mar 2021 09:30:46.771 * DB saved on disk
+19:C 01 Mar 2021 09:30:46.778 * RDB: 0 MB of memory used by copy-on-write
+1:M 01 Mar 2021 09:30:46.871 * Background saving terminated with success
+1:M 01 Mar 2021 09:30:46.881 * Synchronization with replica 172.21.0.1:7002 succeeded
+1:M 01 Mar 2021 10:30:37.633 # Disconnecting timedout replica: 172.21.0.1:7001
+1:M 01 Mar 2021 10:30:37.670 # Connection with replica 172.21.0.1:7001 lost.
+1:M 01 Mar 2021 10:30:37.720 # Disconnecting timedout replica: 172.21.0.1:7002
+1:M 01 Mar 2021 10:30:37.762 # Connection with replica 172.21.0.1:7002 lost.
+1:M 01 Mar 2021 10:30:38.135 * Replica 172.21.0.1:7001 asks for synchronization
+1:M 01 Mar 2021 10:30:38.153 * Partial resynchronization request from 172.21.0.1:7001 accepted. Sending 1260 bytes of backlog starting from offset 718364.
+1:M 01 Mar 2021 10:30:38.201 * Replica 172.21.0.1:7002 asks for synchronization
+1:M 01 Mar 2021 10:30:38.218 * Partial resynchronization request from 172.21.0.1:7002 accepted. Sending 1260 bytes of backlog starting from offset 718364.
+1:M 01 Mar 2021 10:31:33.266 # Connection with replica 172.21.0.1:7002 lost.
+1:M 01 Mar 2021 10:31:33.418 # Connection with replica 172.21.0.1:7001 lost.
+1:M 01 Mar 2021 10:31:33.861 * Replica 172.21.0.1:7001 asks for synchronization
+1:M 01 Mar 2021 10:31:33.873 * Partial resynchronization request from 172.21.0.1:7001 accepted. Sending 154 bytes of backlog starting from offset 730474.
+1:M 01 Mar 2021 10:31:33.887 * Replica 172.21.0.1:7002 asks for synchronization
+1:M 01 Mar 2021 10:31:33.927 * Partial resynchronization request from 172.21.0.1:7002 accepted. Sending 154 bytes of backlog starting from offset 730474.
+1:M 01 Mar 2021 10:31:34.574 # Connection with replica 172.21.0.1:7002 lost.
+1:M 01 Mar 2021 10:31:34.933 # Connection with replica 172.21.0.1:7001 lost.
+1:S 01 Mar 2021 10:35:04.675 * Before turning into a replica, using my own master parameters to synthesize a cached master: I may be able to synchronize with the new master with just a partial transfer.
+1:S 01 Mar 2021 10:35:04.683 * Connecting to MASTER 172.21.0.1:7002
+1:S 01 Mar 2021 10:35:04.689 * MASTER <-> REPLICA sync started
+1:S 01 Mar 2021 10:35:04.694 * REPLICAOF 172.21.0.1:7002 enabled (user request from 'id=24 addr=172.21.0.1:56008 laddr=172.21.0.4:7000 fd=11 name=sentinel-c82544e4-cmd age=209 idle=0 flags=x db=0 sub=0 psub=0 multi=4 qbuf=198 qbuf-free=40756 argv-mem=4 obl=45 oll=0 omem=0 tot-mem=61468 events=r cmd=exec user=default redir=-1')
+1:S 01 Mar 2021 10:35:04.711 * Non blocking connect for SYNC fired the event.
+1:S 01 Mar 2021 10:35:04.736 * Master replied to PING, replication can continue...
+1:S 01 Mar 2021 10:35:04.759 * Trying a partial resynchronization (request f1c2a4f8699e6fccf03aa874a24a982c390b362c:737347).
+1:S 01 Mar 2021 10:35:04.883 * Full resync from master: 257f8eb10f4fdcab866e14036d4b36eb20e722a7:737548
+1:S 01 Mar 2021 10:35:04.892 * Discarding previously cached master state.
+1:S 01 Mar 2021 10:35:04.988 * MASTER <-> REPLICA sync: receiving 178 bytes from master to disk
+1:S 01 Mar 2021 10:35:05.011 * MASTER <-> REPLICA sync: Flushing old data
+1:S 01 Mar 2021 10:35:05.035 * MASTER <-> REPLICA sync: Loading DB in memory
+1:S 01 Mar 2021 10:35:05.079 * Loading RDB produced by version 6.2.0
+1:S 01 Mar 2021 10:35:05.091 * RDB age 1 seconds
+1:S 01 Mar 2021 10:35:05.096 * RDB memory usage when created 2.01 Mb
+1:S 01 Mar 2021 10:35:05.102 * MASTER <-> REPLICA sync: Finished with success
+1:S 01 Mar 2021 10:35:05.114 * Background append only file rewriting started by pid 21
+1:S 01 Mar 2021 10:35:05.161 * AOF rewrite child asks to stop sending diffs.
+21:C 01 Mar 2021 10:35:05.171 * Parent agreed to stop sending diffs. Finalizing AOF...
+21:C 01 Mar 2021 10:35:05.177 * Concatenating 0.00 MB of AOF diff received from parent.
+21:C 01 Mar 2021 10:35:05.186 * SYNC append only file rewrite performed
+21:C 01 Mar 2021 10:35:05.192 * AOF rewrite: 0 MB of memory used by copy-on-write
+1:S 01 Mar 2021 10:35:05.234 * Background AOF rewrite terminated with success
+1:S 01 Mar 2021 10:35:05.241 * Residual parent diff successfully flushed to the rewritten AOF (0.00 MB)
+1:S 01 Mar 2021 10:35:05.251 * Background AOF rewrite finished successfully
+1:S 01 Mar 2021 11:44:22.016 # Connection with master lost.
+1:S 01 Mar 2021 11:44:22.022 * Caching the disconnected master state.
+1:S 01 Mar 2021 11:44:22.026 * Reconnecting to MASTER 172.21.0.1:7002
+1:S 01 Mar 2021 11:44:22.034 * MASTER <-> REPLICA sync started
+1:S 01 Mar 2021 11:44:22.038 * Non blocking connect for SYNC fired the event.
+1:S 01 Mar 2021 11:44:22.045 * Master replied to PING, replication can continue...
+1:S 01 Mar 2021 11:44:22.056 * Trying a partial resynchronization (request 257f8eb10f4fdcab866e14036d4b36eb20e722a7:743902).
+1:S 01 Mar 2021 11:44:22.067 * Successful partial resynchronization with master.
+1:S 01 Mar 2021 11:44:22.073 * MASTER <-> REPLICA sync: Master accepted a Partial Resynchronization.
+1:S 01 Mar 2021 11:46:18.152 # MASTER timeout: no data nor PING received...
+1:S 01 Mar 2021 11:46:25.205 # Connection with master lost.
+1:S 01 Mar 2021 11:46:27.575 * Caching the disconnected master state.
+1:S 01 Mar 2021 11:46:28.018 * Reconnecting to MASTER 172.21.0.1:7002
+1:S 01 Mar 2021 11:46:28.075 * MASTER <-> REPLICA sync started
+1:S 01 Mar 2021 11:46:28.610 * Non blocking connect for SYNC fired the event.
+1:S 01 Mar 2021 11:46:29.766 * Master replied to PING, replication can continue...
+1:S 01 Mar 2021 11:46:30.083 * Trying a partial resynchronization (request 257f8eb10f4fdcab866e14036d4b36eb20e722a7:747629).
+1:S 01 Mar 2021 11:46:30.130 * Successful partial resynchronization with master.
+1:S 01 Mar 2021 11:46:30.176 * MASTER <-> REPLICA sync: Master accepted a Partial Resynchronization.

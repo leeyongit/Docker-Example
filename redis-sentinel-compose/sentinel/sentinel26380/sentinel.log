@@ -1,0 +1,51 @@
+1:X 01 Mar 2021 09:30:45.666 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+1:X 01 Mar 2021 09:30:45.685 # Redis version=6.2.0, bits=64, commit=00000000, modified=0, pid=1, just started
+1:X 01 Mar 2021 09:30:45.697 # Configuration loaded
+1:X 01 Mar 2021 09:30:45.709 * monotonic clock: POSIX clock_gettime
+1:X 01 Mar 2021 09:30:45.724 * Running mode=sentinel, port=26380.
+1:X 01 Mar 2021 09:30:45.728 # WARNING: The TCP backlog setting of 511 cannot be enforced because /proc/sys/net/core/somaxconn is set to the lower value of 128.
+1:X 01 Mar 2021 09:30:45.738 # Sentinel ID is 2bfbd12af361dc5468033ef3bcf3fc88f3d42e86
+1:X 01 Mar 2021 09:30:45.748 # +monitor master mymaster 192.168.31.53 7000 quorum 2
+1:X 01 Mar 2021 09:30:47.518 * +sentinel sentinel eb6670beb5ee570f238aa1c2a3878b0b8b03f452 172.21.0.6 26379 @ mymaster 192.168.31.53 7000
+1:X 01 Mar 2021 09:30:47.557 # Could not rename tmp config file (Device or resource busy)
+1:X 01 Mar 2021 09:30:47.564 # WARNING: Sentinel was not able to save the new configuration on disk!!!: Device or resource busy
+1:X 01 Mar 2021 09:30:47.964 * +sentinel sentinel c82544e47ed6ce6f325ee2042290968081b8beb4 172.21.0.7 26381 @ mymaster 192.168.31.53 7000
+1:X 01 Mar 2021 09:30:47.979 # Could not rename tmp config file (Device or resource busy)
+1:X 01 Mar 2021 09:30:47.990 # WARNING: Sentinel was not able to save the new configuration on disk!!!: Device or resource busy
+1:X 01 Mar 2021 09:30:55.844 * +slave slave 172.21.0.1:7001 172.21.0.1 7001 @ mymaster 192.168.31.53 7000
+1:X 01 Mar 2021 09:30:55.851 # Could not rename tmp config file (Device or resource busy)
+1:X 01 Mar 2021 09:30:55.855 # WARNING: Sentinel was not able to save the new configuration on disk!!!: Device or resource busy
+1:X 01 Mar 2021 09:30:55.857 * +slave slave 172.21.0.1:7002 172.21.0.1 7002 @ mymaster 192.168.31.53 7000
+1:X 01 Mar 2021 09:30:55.863 # Could not rename tmp config file (Device or resource busy)
+1:X 01 Mar 2021 09:30:55.867 # WARNING: Sentinel was not able to save the new configuration on disk!!!: Device or resource busy
+1:X 01 Mar 2021 10:28:03.175 # +sdown master mymaster 192.168.31.53 7000
+1:X 01 Mar 2021 10:28:03.262 # -sdown master mymaster 192.168.31.53 7000
+1:X 01 Mar 2021 10:30:36.189 # +tilt #tilt mode entered
+1:X 01 Mar 2021 10:31:05.705 # -tilt #tilt mode exited
+1:X 01 Mar 2021 10:31:32.247 # +sdown master mymaster 192.168.31.53 7000
+1:X 01 Mar 2021 10:31:33.727 # Could not rename tmp config file (Device or resource busy)
+1:X 01 Mar 2021 10:31:33.823 # WARNING: Sentinel was not able to save the new configuration on disk!!!: Device or resource busy
+1:X 01 Mar 2021 10:31:33.838 # +new-epoch 17
+1:X 01 Mar 2021 10:31:33.871 # Could not rename tmp config file (Device or resource busy)
+1:X 01 Mar 2021 10:31:33.884 # WARNING: Sentinel was not able to save the new configuration on disk!!!: Device or resource busy
+1:X 01 Mar 2021 10:31:33.892 # +vote-for-leader eb6670beb5ee570f238aa1c2a3878b0b8b03f452 17
+1:X 01 Mar 2021 10:31:33.926 # +odown master mymaster 192.168.31.53 7000 #quorum 2/2
+1:X 01 Mar 2021 10:31:33.956 # Next failover delay: I will not start a failover before Mon Mar  1 10:37:34 2021
+1:X 01 Mar 2021 10:31:34.263 # -sdown master mymaster 192.168.31.53 7000
+1:X 01 Mar 2021 10:31:34.295 # -odown master mymaster 192.168.31.53 7000
+1:X 01 Mar 2021 10:31:34.886 # +config-update-from sentinel eb6670beb5ee570f238aa1c2a3878b0b8b03f452 172.21.0.6 26379 @ mymaster 192.168.31.53 7000
+1:X 01 Mar 2021 10:31:34.896 # +switch-master mymaster 192.168.31.53 7000 172.21.0.1 7002
+1:X 01 Mar 2021 10:31:34.912 * +slave slave 172.21.0.1:7001 172.21.0.1 7001 @ mymaster 172.21.0.1 7002
+1:X 01 Mar 2021 10:31:34.943 * +slave slave 192.168.31.53:7000 192.168.31.53 7000 @ mymaster 172.21.0.1 7002
+1:X 01 Mar 2021 10:31:34.970 # Could not rename tmp config file (Device or resource busy)
+1:X 01 Mar 2021 10:31:34.984 # WARNING: Sentinel was not able to save the new configuration on disk!!!: Device or resource busy
+1:X 01 Mar 2021 10:34:33.528 # +tilt #tilt mode entered
+1:X 01 Mar 2021 10:35:04.666 # -tilt #tilt mode exited
+1:X 01 Mar 2021 10:35:10.888 # +sdown slave 192.168.31.53:7000 192.168.31.53 7000 @ mymaster 172.21.0.1 7002
+1:X 01 Mar 2021 10:35:14.718 * +slave slave 172.21.0.1:7000 172.21.0.1 7000 @ mymaster 172.21.0.1 7002
+1:X 01 Mar 2021 10:35:14.727 # Could not rename tmp config file (Device or resource busy)
+1:X 01 Mar 2021 10:35:14.731 # WARNING: Sentinel was not able to save the new configuration on disk!!!: Device or resource busy
+1:X 01 Mar 2021 11:44:21.803 # +tilt #tilt mode entered
+1:X 01 Mar 2021 11:46:18.105 # +tilt #tilt mode entered
+1:X 01 Mar 2021 11:46:26.259 # +tilt #tilt mode entered
+1:X 01 Mar 2021 11:46:53.092 # -tilt #tilt mode exited
