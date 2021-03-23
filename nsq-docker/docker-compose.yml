@@ -11,7 +11,7 @@ services:
       - "4161:4161"
   nsqd:
     image: nsqio/nsq
-    command: /nsqd --broadcast-address=nsqlookupd --lookupd-tcp-address=nsqlookupd:4160
+    command: /nsqd --broadcast-address=${PUBLIC_NETWORK_IP} --lookupd-tcp-address=nsqlookupd:4160
     depends_on:
       - nsqlookupd
     hostname: nsqd
