@@ -16,7 +16,7 @@ services:
       - "4151:4151"
   nsqadmin:
     image: nsqio/nsq
-    command: /nsqadmin --lookupd-http-address=${PUBLIC_NETWORK_IP}:4160
+    command: /nsqadmin --lookupd-http-address=${PUBLIC_NETWORK_IP}:4160 --broadcast-address=${PUBLIC_NETWORK_IP}
     depends_on:
       - nsqlookupd  
     ports:
