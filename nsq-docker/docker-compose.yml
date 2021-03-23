@@ -22,7 +22,7 @@ services:
       - "4151:4151"
   nsqadmin:
     image: nsqio/nsq
-    command: /nsqadmin --lookupd-http-address=nsqlookupd:4161
+    command: /nsqadmin --lookupd-http-address=0.0.0.0:4161
     depends_on:
       - nsqlookupd
     hostname: nsqadmin
