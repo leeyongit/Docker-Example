@@ -1,4 +1,4 @@
-version: '3'
+version: '2'
 services:
   nsqlookupd:
     image: nsqio/nsq
@@ -7,29 +7,30 @@ services:
       - nsq-network
     hostname: nsqlookupd
     ports:
-      - "4160:4160"
       - "4161:4161"
+      - "4160:4160"
   nsqd:
     image: nsqio/nsq
-    command: /nsqd --broadcast-address=${PUBLIC_NETWORK_IP} --lookupd-tcp-address=${PUBLIC_NETWORK_IP}:4160
+    command: /nsqd --lookupd-tcp-address=nsqlookupd:4160 -broadcast-address=${PUBLIC_NETWORK_IP}
     depends_on:
       - nsqlookupd
     hostname: nsqd
     networks:
       - nsq-network
     ports:
-      - "4150:4150"
       - "4151:4151"
+      - "4150:4150"
   nsqadmin:
     image: nsqio/nsq
-    command: /nsqadmin --lookupd-http-address=${PUBLIC_NETWORK_IP}:4161
+    command: /nsqadmin --lookupd-http-address=nsqlookupd:4161
     depends_on:
       - nsqlookupd
     hostname: nsqadmin
-    networks:
-      - nsq-network
     ports:
       - "4171:4171"
+    networks:
+      - nsq-network
+ 
 networks:
   nsq-network:
     driver: bridge
